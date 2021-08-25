@@ -11,23 +11,24 @@ namespace SelectingTask
 
         private Option _rightOption;
         private CellMaker _cellMaker;
+        private CellCleaner _cellCleaner;
         
 
         private void Awake()
         {
             taskEndPanel.gameObject.SetActive(false);
             _cellMaker = GetComponent<CellMaker>();
+            _cellCleaner = GetComponent<CellCleaner>();
         }
 
         public void CheckResult(Option option)
         {
             if (option == _rightOption)
             {
-                Debug.Log("Molodec");
                 if (_cellMaker.IsLastLevel())
                 {
+                    _cellCleaner.RemoveAllCells();
                     taskEndPanel.gameObject.SetActive(true);
-                    Debug.Log("Vse!!!");
                     return;
                 }
                 _cellMaker.InstantiateLevel();

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace SelectingTask
@@ -7,7 +8,10 @@ namespace SelectingTask
     {
         [SerializeField] private List<LevelComplexity> levelsComplexity;
         [SerializeField] private Cell cellPrefab;
+        [SerializeField] private TMP_Text taskLabel;
         [SerializeField] private bool canInstantiateRepeatedRightOption;
+
+        public TMP_Text TaskLabel => taskLabel;
 
         private Queue<TaskSettings> _tasksQueue;
         private List<Option> _instantiateOptions;
@@ -22,6 +26,7 @@ namespace SelectingTask
             _instantiateOptions = new List<Option>();
             _cellCleaner = GetComponent<CellCleaner>();
             _resultChecker = GetComponent<ResultChecker>();
+            _cellCleaner.SetCellMaker(this);
             FillTaskQueue();
         }
 
@@ -58,8 +63,10 @@ namespace SelectingTask
             _cellCleaner.RemoveAllCells();
             var taskQueue = _tasksQueue;
             var taskSettings = taskQueue.Dequeue();
+            var taskText = taskSettings.TaskDescription;
+            taskLabel.text = taskText;
             var cellOptions = taskSettings.CellsOptions;
-            
+
             foreach (var cellOption in cellOptions)
             {
                 var instantiatedCell = Instantiate(cellPrefab, transform);
