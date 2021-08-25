@@ -21,4 +21,4 @@ MonoBehaviour:
   - {fileID: 5768529607047086600, guid: f5cf544d83bcfbd41b1ef36d0cd5d57e, type: 3}
   - {fileID: 5768529607047086600, guid: 50be092c8385fb34483cc8f12e36aedf, type: 3}
   - {fileID: 5768529607047086600, guid: 3bd357f87dea2df41bb1b6e40b86d850, type: 3}
-  rightOption: {fileID: 5768529607047086600, guid: 50be092c8385fb34483cc8f12e36aedf, type: 3}
+  rightOption: {fileID: 5768529607047086600, guid: f5cf544d83bcfbd41b1ef36d0cd5d57e, type: 3}
