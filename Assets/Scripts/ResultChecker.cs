@@ -6,8 +6,10 @@ namespace SelectingTask
     public class ResultChecker : MonoBehaviour
     {
         [SerializeField] private Image taskEndPanel;
+        [SerializeField] private Button nextTaskButton;
         
         public Image TaskEndPanel => taskEndPanel;
+        public Button NextTaskButton => nextTaskButton;
 
         private Option _rightOption;
         private CellMaker _cellMaker;
@@ -21,20 +23,31 @@ namespace SelectingTask
             _cellCleaner = GetComponent<CellCleaner>();
         }
 
-        public void CheckResult(Option option)
+        public void CheckResult(Option selectOption)
         {
-            if (option == _rightOption)
-            {
+            var transformEffects = new TransformEffects();
+            if (selectOption == _rightOption)
+            { 
                 if (_cellMaker.IsLastLevel())
                 {
                     _cellCleaner.RemoveAllCells();
                     taskEndPanel.gameObject.SetActive(true);
+                    transformEffects.FadeInEffect(taskEndPanel, 0.5f);
+                    nextTaskButton.gameObject.SetActive(false);
                     return;
                 }
-                _cellMaker.InstantiateLevel();
+                
+                transformEffects.RightSelectOptionEffect(selectOption);
+                var options = GetComponentsInChildren<Option>();
+                foreach (var option in options)
+                    option.GetComponent<Image>().raycastTarget = false;
+                
+                nextTaskButton.interactable = true;
             }
             else
-                Debug.Log("Loh");
+            {
+                transformEffects.WrongSelectOptionEffect(selectOption);
+            }
         }
 
         public void SetRightCell(Option option)

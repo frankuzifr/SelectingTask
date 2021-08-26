@@ -14,7 +14,7 @@ namespace SelectingTask
         public TMP_Text TaskLabel => taskLabel;
 
         private Queue<TaskSettings> _tasksQueue;
-        private List<Option> _instantiateOptions;
+        private List<Option> _addedRightOptions;
         private CellCleaner _cellCleaner;
         private ResultChecker _resultChecker;
 
@@ -23,7 +23,7 @@ namespace SelectingTask
         private void Awake()
         {
             _tasksQueue = new Queue<TaskSettings>();
-            _instantiateOptions = new List<Option>();
+            _addedRightOptions = new List<Option>();
             _cellCleaner = GetComponent<CellCleaner>();
             _resultChecker = GetComponent<ResultChecker>();
             _cellCleaner.SetCellMaker(this);
@@ -47,18 +47,18 @@ namespace SelectingTask
                 do
                 {
                     random = Random.Range(0, taskSettings.Count);
-                } while (_instantiateOptions.Contains(taskSettings[random].RightOption));
+                } while (_addedRightOptions.Contains(taskSettings[random].RightOption));
                 
                 _tasksQueue.Enqueue(taskSettings[random]);
-                _instantiateOptions.Add(taskSettings[random].RightOption);
+                _addedRightOptions.Add(taskSettings[random].RightOption);
             }
             
-            _instantiateOptions.Clear();
+            _addedRightOptions.Clear();
             _currentLevel = 0;
-            InstantiateLevel();
+            InstantiateLevel(true);
         }
 
-        public void InstantiateLevel()
+        public void InstantiateLevel(bool isStart = false)
         {
             _cellCleaner.RemoveAllCells();
             var taskQueue = _tasksQueue;
@@ -66,10 +66,12 @@ namespace SelectingTask
             var taskText = taskSettings.TaskDescription;
             taskLabel.text = taskText;
             var cellOptions = taskSettings.CellsOptions;
+            var instantiatedCells = new List<Cell>();
 
             foreach (var cellOption in cellOptions)
             {
                 var instantiatedCell = Instantiate(cellPrefab, transform);
+                instantiatedCells.Add(instantiatedCell);
                 var instantiatedCellTransform = instantiatedCell.transform;
                 var instantiatedOption = Instantiate(cellOption, instantiatedCellTransform);
                 
@@ -78,6 +80,13 @@ namespace SelectingTask
             }
 
             _currentLevel++;
+            
+            if (!isStart)
+                return;
+            
+            var transformEffects = new TransformEffects();
+            transformEffects.FadeInEffect(taskLabel);
+            transformEffects.BounceEffect(instantiatedCells.ToArray());
         }
 
         public bool IsLastLevel()
