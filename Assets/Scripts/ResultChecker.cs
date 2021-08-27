@@ -26,18 +26,27 @@ namespace SelectingTask
         public void CheckResult(Option selectOption)
         {
             var transformEffects = new TransformEffects();
+            var transformEffectsSettings = _cellMaker.TransformEffectsSettings;
             if (selectOption == _rightOption)
             { 
                 if (_cellMaker.IsLastLevel())
                 {
                     _cellCleaner.RemoveAllCells();
                     taskEndPanel.gameObject.SetActive(true);
-                    transformEffects.FadeInEffect(taskEndPanel, 0.5f);
+
+                    var taskEndPanelEndValue = transformEffectsSettings.TaskEndFadeInPanelEndValue;
+                    var taskEndPanelDuration = transformEffectsSettings.TaskEndFadeInPanelDuration;
+                    transformEffects.FadeInEffect(taskEndPanel, taskEndPanelEndValue, taskEndPanelDuration);
                     nextTaskButton.gameObject.SetActive(false);
                     return;
                 }
+
+                var rightSelectedOptionCountLoop = transformEffectsSettings.RightSelectedOptionCountLoop;
+                var rightSelectedOptionScaleOffset = transformEffectsSettings.RightSelectedOptionScaleOffset;
+                var rightSelectedOptionDuration = transformEffectsSettings.RightSelectedOptionDuration;
+                transformEffects.RightSelectOptionEffect(selectOption, rightSelectedOptionCountLoop, 
+                    rightSelectedOptionScaleOffset, rightSelectedOptionDuration);
                 
-                transformEffects.RightSelectOptionEffect(selectOption);
                 var options = GetComponentsInChildren<Option>();
                 foreach (var option in options)
                     option.GetComponent<Image>().raycastTarget = false;
@@ -46,7 +55,11 @@ namespace SelectingTask
             }
             else
             {
-                transformEffects.WrongSelectOptionEffect(selectOption);
+                var wrongSelectedOptionCountLoop = transformEffectsSettings.RightSelectedOptionCountLoop;
+                var wrongSelectedOptionScaleOffset = transformEffectsSettings.RightSelectedOptionScaleOffset;
+                var wrongSelectedOptionDuration = transformEffectsSettings.RightSelectedOptionDuration;
+                transformEffects.WrongSelectOptionEffect(selectOption, wrongSelectedOptionCountLoop, 
+                    wrongSelectedOptionScaleOffset, wrongSelectedOptionDuration);
             }
         }
 

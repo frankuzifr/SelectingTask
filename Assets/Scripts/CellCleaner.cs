@@ -16,9 +16,7 @@ namespace SelectingTask
             var cells = GetComponentsInChildren<Cell>();
 
             foreach (var cell in cells)
-            {
                 Destroy(cell.gameObject);
-            }
             
             _cellMaker.TaskLabel.text = string.Empty;
         }

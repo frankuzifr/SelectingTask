@@ -1,17 +1,28 @@
 ﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace SelectingTask
 {
     public class CellMaker : MonoBehaviour
     {
         [SerializeField] private List<LevelComplexity> levelsComplexity;
+        
+        [Header("Environment")]
         [SerializeField] private Cell cellPrefab;
         [SerializeField] private TMP_Text taskLabel;
-        [SerializeField] private bool canInstantiateRepeatedRightOption;
+        [SerializeField] private Image screenLoading;
 
+        [Header("Effects settings")] 
+        [SerializeField] private TransformEffectsSettings transformEffectsSettings;
+        
+        [Header("Other settings")]
+        [SerializeField] private bool canInstantiateRepeatedRightOption;
+        
         public TMP_Text TaskLabel => taskLabel;
+        public Image ScreenLoading => screenLoading;
+        public TransformEffectsSettings TransformEffectsSettings => transformEffectsSettings;
 
         private Queue<TaskSettings> _tasksQueue;
         private List<Option> _addedRightOptions;
@@ -27,6 +38,7 @@ namespace SelectingTask
             _cellCleaner = GetComponent<CellCleaner>();
             _resultChecker = GetComponent<ResultChecker>();
             _cellCleaner.SetCellMaker(this);
+            screenLoading.gameObject.SetActive(false);
             FillTaskQueue();
         }
 
@@ -85,8 +97,16 @@ namespace SelectingTask
                 return;
             
             var transformEffects = new TransformEffects();
-            transformEffects.FadeInEffect(taskLabel);
-            transformEffects.BounceEffect(instantiatedCells.ToArray());
+            var screenLoadingFadeOutEffectDuration = transformEffectsSettings.ScreenLoadingFadeOutEffectDuration;
+            transformEffects.FadeOutEffect(screenLoading, screenLoadingFadeOutEffectDuration);
+            
+            var textLabelFadeInEffectEndValue = transformEffectsSettings.TextLabelFadeInEffectEndValue;
+            var textLabelFadeInEffectDuration = transformEffectsSettings.TextLabelFadeInEffectDuration;
+            transformEffects.FadeInEffect(taskLabel, textLabelFadeInEffectEndValue, textLabelFadeInEffectDuration);
+            
+            var maxBounceValue = transformEffectsSettings.MaxBounceValue;
+            var bounceDuration = transformEffectsSettings.BounceDuration;
+            transformEffects.BounceEffect(instantiatedCells.ToArray(), maxBounceValue, bounceDuration);
         }
 
         public bool IsLastLevel()

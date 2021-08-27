@@ -12,8 +12,13 @@ namespace SelectingTask
             var taskEndPanel = resultChecker.TaskEndPanel;
             var nextTaskButton = resultChecker.NextTaskButton;
             var button = GetComponent<Button>();
+            var transformEffects = new TransformEffects();
+            var transformEffectsSettings = cellMaker.TransformEffectsSettings;
+            var screenLoadingFadeInMaxValue = transformEffectsSettings.ScreenLoadingFadeInMaxValue;
+            var screenLoadingFadeInEffectDuration = transformEffectsSettings.ScreenLoadingFadeInEffectDuration;
             button.onClick.AddListener(() =>
             {
+                transformEffects.FadeInEffect(cellMaker.ScreenLoading, screenLoadingFadeInMaxValue, screenLoadingFadeInEffectDuration);
                 cellMaker.FillTaskQueue();
                 taskEndPanel.gameObject.SetActive(false);
                 nextTaskButton.gameObject.SetActive(true);
