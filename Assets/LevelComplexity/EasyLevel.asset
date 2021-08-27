@@ -15,3 +15,11 @@ MonoBehaviour:
   tasksSettings:
   - {fileID: 11400000, guid: e07a3baf361bda242a6573ccae700ed4, type: 2}
   - {fileID: 11400000, guid: ca3a1b12797119342b26e8d68be35c41, type: 2}
+  - {fileID: 11400000, guid: 816f230106c7f6f4dbfa136db83f7833, type: 2}
+  - {fileID: 11400000, guid: 562f35f567777574882e3b03b91d68d3, type: 2}
+  - {fileID: 11400000, guid: f4d03087791b57945b584229c35d9556, type: 2}
+  - {fileID: 11400000, guid: aae90d4aa38933d4b943cac483f7ed00, type: 2}
+  - {fileID: 11400000, guid: 50d0df22626a63346aee3e22f36ee6af, type: 2}
+  - {fileID: 11400000, guid: 0c0de717ad4c6fb4f8d6b12a1baf2e24, type: 2}
+  - {fileID: 11400000, guid: 795a88895f5348f4fb01a5e82587a672, type: 2}
+  - {fileID: 11400000, guid: 14d8b01739528d04d94c24ab71b4d13e, type: 2}

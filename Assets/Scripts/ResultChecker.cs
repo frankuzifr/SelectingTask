@@ -55,11 +55,11 @@ namespace SelectingTask
             }
             else
             {
-                var wrongSelectedOptionCountLoop = transformEffectsSettings.RightSelectedOptionCountLoop;
-                var wrongSelectedOptionScaleOffset = transformEffectsSettings.RightSelectedOptionScaleOffset;
-                var wrongSelectedOptionDuration = transformEffectsSettings.RightSelectedOptionDuration;
+                var wrongSelectedOptionCountLoop = transformEffectsSettings.WrongSelectedOptionCountLoop;
+                var wrongSelectedOptionMoveXOffset = transformEffectsSettings.WrongSelectedOptionMoveXOffset;
+                var wrongSelectedOptionDuration = transformEffectsSettings.WrongSelectedOptionDuration;
                 transformEffects.WrongSelectOptionEffect(selectOption, wrongSelectedOptionCountLoop, 
-                    wrongSelectedOptionScaleOffset, wrongSelectedOptionDuration);
+                    wrongSelectedOptionMoveXOffset, wrongSelectedOptionDuration);
             }
         }
 

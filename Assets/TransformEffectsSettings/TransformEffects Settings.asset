@@ -25,5 +25,5 @@ MonoBehaviour:
   rightSelectedOptionScaleOffset: 0.1
   rightSelectedOptionDuration: 0.1
   wrongSelectedOptionCountLoop: 2
-  wrongSelectedOptionMoveXOffset: 0.1
+  wrongSelectedOptionMoveXOffset: 0.5
   wrongSelectedOptionDuration: 0.1

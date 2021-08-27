@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: addb6af73c754eaeaadb6ec8f5e6e0cd, type: 3}
   m_Name: Task 2
   m_EditorClassIdentifier: 
-  taskDescription: "\u041D\u0430\u0439\u0434\u0438\u0442\u0435 \u0433\u043E\u043B\u0443\u0431\u043E\u0439
-    \u043A\u0432\u0430\u0434\u0440\u0430\u0442"
+  taskDescription: "\u041D\u0430\u0439\u0434\u0438\u0442\u0435 5"
   cellsOptions:
   - {fileID: 5768529607047086600, guid: 5f7c53e00c3675a469eeab77160e7856, type: 3}
   - {fileID: 5768529607047086600, guid: de1bf1e2ce54c7941a13e914815c0fa0, type: 3}

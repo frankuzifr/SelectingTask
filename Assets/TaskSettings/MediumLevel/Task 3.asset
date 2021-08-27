@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: addb6af73c754eaeaadb6ec8f5e6e0cd, type: 3}
+  m_Name: Task 3
+  m_EditorClassIdentifier: 
+  taskDescription: "\u041D\u0430\u0439\u0434\u0438\u0442\u0435 T"
+  cellsOptions:
+  - {fileID: 5768529607047086600, guid: aeb6e2b525145be4d8822de84f5d38ba, type: 3}
+  - {fileID: 5768529607047086600, guid: 8a2c6039724e97241a2ca2bcfc3fc5f4, type: 3}
+  - {fileID: 5768529607047086600, guid: a7984b708a8582b40a441d084c279852, type: 3}
+  - {fileID: 5768529607047086600, guid: f9b7fa4a3ba1e224ba038dbecc7dcbed, type: 3}
+  - {fileID: 5768529607047086600, guid: 49a0a2e49433282419bd328b5f4c5ad0, type: 3}
+  - {fileID: 5768529607047086600, guid: 10fc8e85e96479d429fd6204164e0ac2, type: 3}
+  rightOption: {fileID: 5768529607047086600, guid: 8a2c6039724e97241a2ca2bcfc3fc5f4, type: 3}
